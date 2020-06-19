@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package MyPackages.Modul;
 
 import java.text.ParseException;
@@ -18,7 +13,9 @@ public class User implements IManageCart{
     private String password;
     private int balance;
     private Cart myCart;
-
+    
+    /*Azért van benne egy try-catch, hogy a dátumot átalakítsa, de ha bővíteni kellene,
+    akkor egyszerű lenne kivételkezetést írni a többi adathoz is.*/
     public User(String name, String birthDate, String address, String email, String password) {
         try{
             this.name = name;
@@ -31,6 +28,7 @@ public class User implements IManageCart{
         }catch(ParseException E){}
     }
 
+    //Csak a Balance-nak csináltam setter-gettert, mert csak ennek az adatait használom.
     public void setBalance(int balance) {
         this.balance = balance;
     }
@@ -38,25 +36,27 @@ public class User implements IManageCart{
         return balance;
     }
     
+    /*Tudom, hogy nem kéne kiiratásokat tennem ilyen metódusokba, de másképpen nemtudtam szemléltetni,
+    hogy követhetők legyenek a történések a kimeneten.*/
     public void pay(){
         if(this.getBalance() >= myCart.getCartPrice()){
              this.setBalance(this.getBalance()-myCart.getCartPrice());
-             System.out.println("Purchase was succesful. Your remaining balance: " + this.getBalance());
+             System.out.println("\n" + "Purchase was succesful. Your remaining balance: " + this.getBalance());
         } else{
-            System.out.println("Purchase has failed due to not enough balance. Remove some of the items or upload money on your account.");
+            System.out.println("\n" + "Purchase has failed due to not enough balance. Remove some of the items from your cart.");
         }
     }
     
     public void addToCart(Book book) {
         myCart.addToCart(book);
-        System.out.println(book.toString() + " has been added to your cart. Your cart contents: ");
-        myCart.displayCart();
+        System.out.println("\n" + book.toString() + " has been added to your cart. Your cart contents: \n");    //Ezt
+        myCart.displayCart();                                                                                   //és ezt is a kimeten való követhetőség miatt tettem bele.
     }
     
     public void removeFromCart(Book book) {
         myCart.removeFromCart(book);
-        System.out.println(book.toString() + " has been removed from your cart. Your cart contents: ");
-        myCart.displayCart();
+        System.out.println("\n" + book.toString() + " has been removed from your cart. Your cart contents: \n");    //Ezt
+        myCart.displayCart();                                                                                       //és ezt is a kimeten való követhetőség miatt tettem bele.
     }
     
     @Override

@@ -1,14 +1,5 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package MyPackages.Modul;
 
-/**
- *
- * @author kisat
- */
 public class Book {
     
     private String title;
@@ -24,14 +15,14 @@ public class Book {
         this.isbn = isbn;
         this.price = price;
     }
-
+    
+    //Itt szintén csak ennek a getter-ét csináltam meg, a többire csak akkor lenne szükségem, ha csinálok UI felületet
     public int getPrice() {
         return price;
     }
 
     @Override
     public String toString() {
-        return "title = " + title + " from " + author;
+        return title + " from " + author; //Nem iratom ki az összes adatát, mert különben nehezebben lenne látható a kimeneten, hogy mi is történt.
     }
-    
 }

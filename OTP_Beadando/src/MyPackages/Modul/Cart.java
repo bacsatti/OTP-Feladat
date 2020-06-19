@@ -1,16 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package MyPackages.Modul;
 
 import java.util.ArrayList;
 
-/**
- *
- * @author kisat
- */
 public class Cart implements IManageCart {
     
     ArrayList<Book> cart;
@@ -40,5 +31,4 @@ public class Cart implements IManageCart {
     public void removeFromCart(Book book){
         cart.remove(book);
     }
-    
 }
